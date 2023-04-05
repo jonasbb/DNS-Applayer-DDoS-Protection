@@ -1,0 +1,69 @@
+# Schema and list of valid keys
+# https://github.com/citation-file-format/citation-file-format/blob/main/schema-guide.md
+cff-version: "1.2.0"
+
+message: "If you use this software, please cite it as below."
+license: BSD-3-Clause
+date-released: 2023-04-05
+
+authors:
+  - family-names: Bushart
+    given-names: Jonas
+    affiliation: CISPA Helmholtz Center for Information Security
+    email: jonas.bushart@cispa.de
+    website: https://bushart.org/
+  - family-names: Rossow
+    given-names: Christian
+    affiliation: CISPA Helmholtz Center for Information Security
+    email: rossow@cispa.de
+    website: https://christian-rossow.de/
+title: "Anomaly-based Filtering of Application-Layer DDoS Against DNS Authoritatives"
+url: "https://github.com/dns-application-layer-ddos/dns-application-layer-ddos"
+repository-code: "https://github.com/cispa/DNS-Applayer-DDoS-Protection/"
+keywords:
+  - "application-layer ddos"
+  - "ddos defense"
+  - "ddos"
+  - "dns"
+  - "anomaly detection"
+type: "software"
+
+preferred-citation:
+  authors:
+    - family-names: Bushart
+      given-names: Jonas
+      affiliation: CISPA Helmholtz Center for Information Security
+      email: jonas.bushart@cispa.de
+      website: https://bushart.org/
+    - family-names: Rossow
+      given-names: Christian
+      affiliation: CISPA Helmholtz Center for Information Security
+      email: rossow@cispa.de
+      website: https://christian-rossow.de/
+  title: "Anomaly-based Filtering of Application-Layer DDoS Against DNS Authoritatives"
+  url: "https://publications.cispa.saarland/id/eprint/3925"
+  conference:
+    name: "8th IEEE European Symposium on Security and Privacy"
+    date-start: 2023-07-03
+    date-end: 2023-07-07
+    city: "Delft"
+    country: "NL"
+    website: "https://www.ieee-security.org/TC/EuroSP2023/"
+  type: conference-paper
+  year: 2023
+  month: 7
+  date-published: 2023-07-03
+  status: submitted
+  pages: 18
+  publisher:
+    name: "IEEE"
+  abstract: |
+    Authoritative DNS infrastructures are at the core of the Internet ecosystem.
+    But how resilient are typical authoritative DNS name servers against application-layer Denial-of-Service attacks?
+    In this paper, with the help of a large country-code TLD operator, we assess the expected attack load and DoS countermeasures.
+    We find that standard botnets or even single-homed attackers can overload the computational resources of authoritative name servers--even if redundancy such as anycast is in place.
+    To prevent the resulting devastating DNS outages, we assess how effective upstream filters can be as a last resort.
+    We propose an anomaly detection defense that allows both, well-behaving high-volume DNS resolvers as well as low-volume clients to continue name lookups---while blocking most of the attack traffic.
+    Upstream ISPs or IXPs can deploy our scheme and drop attack traffic to reasonable query loads at or below 100k queries per second at a false positive rate of 1.2% to 5.7% (median 2.4%).
+
+

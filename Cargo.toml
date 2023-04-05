@@ -1,0 +1,71 @@
+[workspace]
+members = [
+    "crates/*",
+]
+resolver = "2"
+
+[workspace.dependencies]
+chrono.features = ["serde"]
+chrono.version = "0.4.22"
+clap.features = ["derive"]
+clap.version = "~4.0"
+color-eyre.version = "0.6.2"
+env_logger.version = "0.9.1"
+futures.version = "0.3.25"
+indicatif.version = "0.17.1"
+ipnetwork.features = ["serde"]
+ipnetwork.version = "0.19.0"
+itertools.version = "0.10.5"
+log.version = "0.4.17"
+monostate.version = "0.1.1"
+once_cell.version = "1.16.0"
+ordered-float.features = ["serde"]
+ordered-float.version = "3.4.0"
+rand.version = "0.8.5"
+rand_chacha.version = "0.3.1"
+rayon.version = "1.5.3"
+serde.features = ["derive"]
+serde.version = "1.0.147"
+serde_json.version = "1.0.87"
+serde_path_to_error.version = "0.1.8"
+serde_repr.version = "0.1.9"
+serde_with.version = "2.0.1"
+sqlx.features = [
+    "chrono",
+    "ipnetwork",
+    "offline",
+    "postgres",
+    "runtime-tokio-rustls",
+]
+sqlx.version = "0.6.2"
+strum.features = ["derive"]
+strum.version = "0.24.1"
+tokio.features = ["macros"]
+tokio.version = "1.21.2"
+walkdir.version = "2.3.2"
+
+# Full debug is mostly not neccessary. So speedup the compile time a bit and reduce artifact size.
+[profile.dev]
+opt-level = 1
+
+# This applies to all dependencies, but not this crate or any workspace member
+# Compile all dependencies with highest optimization level
+# This leads to better performance for debug builds, with acceptable compile time overhead
+[profile.dev.package."*"]
+debug = 1     # lines only
+opt-level = 2
+
+# Disable debug information as they are not needed
+# Enable some slight optimizations for build scripts and proc-macros
+#   Default is opt-level = 0
+[profile.dev.build-override]
+debug = false
+opt-level = 1
+
+[profile.release]
+debug = 1    # lines only
+lto = "thin"
+
+[profile.bench]
+debug = false
+lto = true

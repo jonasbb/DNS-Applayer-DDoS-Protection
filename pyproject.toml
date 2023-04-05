@@ -1,0 +1,20 @@
+[tool.pdm]
+
+[project]
+authors = []
+dependencies = [
+    "dataclasses-json>=0.5.7",
+]
+description = "Generate IP-based allowlists from NetFlow files."
+license = {text = "MIT"}
+name = "ddos-filtering"
+readme = "README.md"
+requires-python = ">=3.10"
+version = "1.0.0"
+
+[project.scripts]
+ddos-filtering = "ddos_filtering:main"
+
+[build-system]
+build-backend = "pdm.backend"
+requires = ["pdm-backend"]

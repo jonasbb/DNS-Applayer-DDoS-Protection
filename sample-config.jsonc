@@ -1,0 +1,22 @@
+{
+    // Only collect traffic going to these IP networks
+    "destination_addresses": [
+        "0.0.0.0/0",
+        "::/0"
+    ],
+
+    // Aggregate traffic in batches of this many seconds
+    "aggregation_time": 3600,
+
+    // Prefix length to aggregate IPv4 addresses
+    "ipv4_aggregation": 24,
+    // Prefix length to aggregate IPv6 addresses
+    "ipv6_aggregation": 48,
+
+    // Training window size (in multiple of aggregation_time).
+    "param_w_train": 24,
+    // Minimum number of active hours before an IP network can be added to the allowlist.
+    "param_steady": 3,
+    // Minimum traffic level (in multiple of aggregation time) before an IP network can be added to the allowlist.
+    "param_heavy": 128
+}

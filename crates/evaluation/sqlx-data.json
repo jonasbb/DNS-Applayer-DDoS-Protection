@@ -1,0 +1,81 @@
+{
+  "db": "PostgreSQL",
+  "08b3b34e2ad406fe66e24ea361bd0342c23466dcc6c2053d038e9145c63b4956": {
+    "describe": {
+      "columns": [
+        {
+          "name": "iprange_srcs!",
+          "ordinal": 0,
+          "type_info": "CidrArray"
+        },
+        {
+          "name": "pkts_avgs!",
+          "ordinal": 1,
+          "type_info": "Float8Array"
+        }
+      ],
+      "nullable": [
+        false,
+        false
+      ],
+      "parameters": {
+        "Left": [
+          "Int4",
+          "Int4",
+          "Text",
+          "Inet"
+        ]
+      }
+    },
+    "query": "SELECT\n        iprange_srcs as \"iprange_srcs!\",\n        pkts_avgs as \"pkts_avgs!\"\n    FROM traffic_interval\n    WHERE\n        time_start = $1\n        AND train_window = $2\n        AND location = $3\n        AND iprange_dst = $4"
+  },
+  "2491209fd9475118978c146942ab9be9024c62cfed0cba64a0d5d8fac05c8a58": {
+    "describe": {
+      "columns": [
+        {
+          "name": "location!",
+          "ordinal": 0,
+          "type_info": "Text"
+        },
+        {
+          "name": "iprange_dst!",
+          "ordinal": 1,
+          "type_info": "Inet"
+        }
+      ],
+      "nullable": [
+        true,
+        true
+      ],
+      "parameters": {
+        "Left": []
+      }
+    },
+    "query": "\nSELECT DISTINCT\n    location AS \"location!\",\n    iprange_dst AS \"iprange_dst!\"\nFROM\n    pre_test_intervals\nWHERE\n    family(iprange_dst) = 4\nORDER BY\n    1,\n    2\n;"
+  },
+  "dbee7a7eac6493aa9ac15466abb56b8ce0fd4187afa4634cd42aba3d85b15dea": {
+    "describe": {
+      "columns": [
+        {
+          "name": "array_agg!",
+          "ordinal": 0,
+          "type_info": "CidrArray"
+        }
+      ],
+      "nullable": [
+        false
+      ],
+      "parameters": {
+        "Left": [
+          "Int4",
+          "Int4",
+          "Int4",
+          "Int4",
+          "Text",
+          "Inet"
+        ]
+      }
+    },
+    "query": "SELECT array_agg as \"array_agg!\" FROM allowlist\n        WHERE time_start = $1\n        AND train_window = $2\n        AND active_min = $3\n        AND pkts_min = $4\n        AND location = $5\n        AND iprange_dst = $6"
+  }
+}

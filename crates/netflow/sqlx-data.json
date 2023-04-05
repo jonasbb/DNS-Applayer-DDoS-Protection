@@ -1,0 +1,21 @@
+{
+  "db": "PostgreSQL",
+  "2c87227a7e996c25411fce4fac2bbced4748f3ab6ec9631f9c809702d2598377": {
+    "describe": {
+      "columns": [],
+      "nullable": [],
+      "parameters": {
+        "Left": [
+          "Text",
+          "Cidr",
+          "Int4",
+          "Int4",
+          "Int2",
+          "Inet",
+          "Int4"
+        ]
+      }
+    },
+    "query": "INSERT INTO nfaggregates VALUES ($1, $2, $3, $4, $5, $6, $7);"
+  }
+}
